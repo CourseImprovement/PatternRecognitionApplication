@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+	<script type="text/javascript" src="../build/pra.js"></script>
+	<script type="text/javascript">
+		var sp = new StringPra();
+		sp.train('wilson', 'Wilson');
+		sp.train('sheridan', 'Sheridan');
+		sp.train('willden', 'Willden');
+		console.log(sp.analyze('smith'));
+		console.log(sp.analyze('sheridan'));
+		console.log(sp.analyze('willden'));
+		console.log(sp.analyze('WILSON'));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
