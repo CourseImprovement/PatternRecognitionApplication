@@ -4,20 +4,29 @@
 	<meta charset="UTF-8">
 	<title>Test</title>
 	<script type="text/javascript" src="../build/pra.js"></script>
+	<script type="text/javascript" src="papaparse.js"></script>
+	<script type="text/javascript" src="csv_test.js"></script>
 	<script type="text/javascript">
-		var sp = new StringPra();
-		sp.train('BIO 265 - Fix', 'BIO 265');
-		sp.train('comm 120 - fix', 'COMM 120');
-		sp.train('ENg 100 - Fix', 'ENG 100');
-		console.log(sp.analyze('Art 100 - fix'));
-		console.log(sp.analyze('Eng 106 - FIX'));
-		console.log(sp.analyze('FdMaT108-Fix'));
-		console.log(sp.analyze('ART 130-Fix'));
-		console.log(sp.analyze('b100-Fix'));
-		console.log(sp.analyze('fdrel    121-Fix  '));
+		// var sp = new StringPra();
+		// sp.train('BIO 265 - Fix', 'BIO 265');
+		// sp.train('comm 120 - fix', 'COMM 120');
+		// sp.train('ENg 100 - Fix', 'ENG 100');
+		// console.log(sp.analyze('Art 100 - fix'));
+		// console.log(sp.analyze('Eng 106 - FIX'));
+		// console.log(sp.analyze('FdMaT108-Fix'));
+		// console.log(sp.analyze('ART 130-Fix'));
+		// console.log(sp.analyze('b100-Fix'));
+		// console.log(sp.analyze('fdrel    121-Fix  '));
 	</script>
 </head>
 <body>
-	
+	<input type="file" id="file"/>
+	<button onclick="testCSV()">Run</button>
+	<div style="text-align: center">
+		<h1>Pattern Recognition Test</h1>
+		<div>
+			<p id="test"></p>
+		</div>
+	</div>
 </body>
 </html>
