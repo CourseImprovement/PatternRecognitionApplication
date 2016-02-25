@@ -8,6 +8,7 @@ function isLetter(letter){
 }
 
 StringPra.registerTest('casePattern', 'c', function(input, output){
+	// l for lowercase, u for uppercase
 	var pattern = "";
 	for (var i = 0; i < output.length; i++){
 		pattern += getCase(output[i]);
@@ -56,6 +57,6 @@ StringPra.registerPatternAnalyzer('case', function(pairs){
 			chosenKey = key;
 		}
 	}
-	pattern.case = key;
+	pattern.case = chosenKey;
 	return pattern.case;
-})
+});

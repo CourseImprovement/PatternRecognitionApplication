@@ -5,6 +5,7 @@ function StringPra(){
 	this.isAnalyzed = false;
 	this.analzedResults = {};
 	this.pattern = {};
+	this.common = {};
 }
 
 StringPra.tests = [];
@@ -16,6 +17,7 @@ StringPra.prototype.train = function(input, output){
 	this.processPair.push(this.current);
 
 	for (var i = 0; i < StringPra.tests.length; i++){
+		this.common[StringPra.tests[i].alias] = [];
 		var results = StringPra.tests[i].func(input, output);
 		this.current.results[StringPra.tests[i].alias] = results;
 	}
