@@ -13,6 +13,8 @@ function runCSV(file, callback){
 	reader.readAsText(file, 'utf8');
 }
 
+var output = '';
+
 function testCSV(){
 	var file = document.getElementById('file').files[0];
 	if (file != undefined) {
@@ -23,9 +25,10 @@ function testCSV(){
 				if (set[i][1] != "") {
 					sp.train(set[i][0], set[i][1]);
 				} else {
-					document.getElementById('test').innerHTML += '<strong>old:&nbsp;</strong>' + set[i][0] + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>new:&nbsp;</strong>' + sp.analyze(set[i][0]) + '<br><br>';
+					output += '<strong>old:&nbsp;</strong>' + set[i][0] + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>new:&nbsp;</strong>' + sp.analyze(set[i][0]) + '<br><br>';
 				}
 			}
+			document.body.innerHTML += output;
 		});
 	}
 }

@@ -63,35 +63,35 @@ StringPra.registerTest('substringAppend', 'sa', function(input, output){
 	return groupLikeCharacters(output, 0, [], []).subs;
 });
 
+function getCommon(p){
+	var vals = [];
+	// rule is over 75%
+	for (var i = 0; i < sp.common.sa.length; i++){
+		if (sp.common.sa[i].type == p){
+			vals.push(sp.common.sa[i].val);
+		}
+	}
+	var sort = {};
+	for (var i = 0; i < vals.length; i++){
+		if (!sort[vals[i]]) sort[vals[i]] = 0;
+		sort[vals[i]]++;
+	}
+	var chosenKey = null;
+	var num = 0;
+	var keys = Object.keys(sort);
+	for (var i = 0; i < keys.length; i++){
+		if (sort[keys[i]] > num){
+			num = sort[keys[i]];
+			chosenKey = keys[i];
+		}
+	}
+	if ((sort[chosenKey] / vals.length) > 0.75) return chosenKey;
+	return false;
+}
+
 StringPra.analyze.push(function(input, pattern){
 	var group = groupLikeCharacters(input, 0, [], []);
 	var result = '';
-
-
-	function getCommon(p){
-		var vals = [];
-		// rule is over 75%
-		for (var i = 0; i < sp.common.sa.length; i++){
-			if (sp.common.sa[i].type == p){
-				vals.push(sp.common.sa[i].val);
-			}
-		}
-		var sort = {};
-		for (var i = 0; i < vals.length; i++){
-			if (!sort[vals[i]]) sort[vals[i]] = 0;
-			sort[vals[i]]++;
-		}
-		var chosenKey = null;
-		var num = 0;
-		for (key in sort){
-			if (sort[key] > num){
-				num = sort[key];
-				chosenKey = key;
-			}
-		}
-		if ((sort[chosenKey] / vals.length) > 0.75) return chosenKey;
-		return false;
-	}
 
 	for (var i = 0; i < pattern.substringAppend.length; i++){
 		var common = getCommon(pattern.substringAppend[i]);
@@ -130,10 +130,11 @@ StringPra.registerPatternAnalyzer('substringAppend', function(pairs){
 	}
 	var chosenKey;
 	var size = 0;
-	for (var key in caseCollect){
-		if (size < caseCollect[key]){
-			size = caseCollect[key];
-			chosenKey = key;
+	var keys = Object.keys(caseCollect);
+	for (var i = 0; i < keys.length; i++){
+		if (size < caseCollect[keys[i]]){
+			size = caseCollect[keys[i]];
+			chosenKey = keys[i];
 		}
 	}
 	if (chosenKey.indexOf(',') > -1) chosenKey = chosenKey.split(',');

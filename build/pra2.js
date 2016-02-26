@@ -265,3 +265,14 @@ StringPra.registerPatternAnalyzer('substringAppend', function(pairs){
 	pattern.substringAppend = chosenKey;
 	return pattern.substringAppend;
 });
+
+var sp = new StringPra();
+sp.train('BIO 265 - Fix', 'BIO 265');
+sp.train('comm 120 - fix', 'COMM 120');
+sp.train('ENg 100 - Fix', 'ENG 100');
+var a1 = sp.analyze('Art 100 - fix');
+// console.log(sp.analyze('Eng 106 - FIX'));
+// console.log(sp.analyze('FdMaT108-Fix'));
+// console.log(sp.analyze('ART 130-Fix'));
+// console.log(sp.analyze('b100-Fix'));
+// console.log(sp.analyze('fdrel    121-Fix  '));

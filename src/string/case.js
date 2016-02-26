@@ -1,6 +1,5 @@
 function getCase(letter){
-	var match = letter.match(/[a-z]/g);
-	return match != undefined && match.length == 1 ? 'l' : 'u';
+	return letter.replace(/[a-z]/g, 'l').replace(/[A-Z]/g, 'u');
 }
 
 function isLetter(letter){
@@ -51,10 +50,11 @@ StringPra.registerPatternAnalyzer('case', function(pairs){
 	}
 	var chosenKey;
 	var size = 0;
-	for (var key in caseCollect){
-		if (size < caseCollect[key]){
-			size = caseCollect[key];
-			chosenKey = key;
+	var keys = Object.keys(caseCollect);
+	for (var i = 0; i < keys.length; i++){
+		if (size < caseCollect[keys[i]]){
+			size = caseCollect[keys[i]];
+			chosenKey = keys[i];
 		}
 	}
 	pattern.case = chosenKey;
